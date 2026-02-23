@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SaiRam | Unity Game Developer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <canvas id="scroll-animation"></canvas>
+
+    <div class="scanlines"></div>
+
+    <!-- Hero Section -->
+    <div id="header">
+        <div class="container">
+            <nav>
+                <div class="nav-logo-left">
+        <a href="https://sairam1606.github.io/Portfolio/" target="_blank">
+            <img src="https://img.icons8.com/?size=100&id=zhRIl0Zxiaf0&format=png&color=000000" alt="Unreal Engine Logo">
+        </a>
+    </div>
+                <div class="logo"></div>
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-circle-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+
+            <div class="hero-text">
+                <img class="ue-logo-pop" width="150" height="55" src="Images/Unity.png" alt="Unreal Engine logo">
+                <p class="role">UNITY GAME DEVELOPER</p>
+                <h1>Hi, I'm <span class="glitch" data-text="SaiRam">SaiRam</span></h1>
+                <video autoplay loop muted playsinline class="back-char">
+                    <source src="Images/Hi2.webm" type="video/webm">
+                </video>
+                <p class="tagline">Building immersive games with Unity & C#</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about">
+        <div class="container">
+            <h1 class="subtitle">About Me</h1>
+            <div class="row">
+                <div class="about-col-2">
+                    <!-- Self Introduction Video -->
+                    <div class="video-wrapper" style="margin-bottom: 50px;">
+                        <iframe 
+                            src="https://www.youtube.com/embed/VIDEO_ID_HERE?rel=0&modestbranding=1&showinfo=0" 
+                            title="SaiRam - Self Introduction" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <ul class="dotted-list">
+                       
+                        <li>I'm Sai Ram, a junior game developer specializing in Unity. </li>
+                        <li>I love turning ideas into playable experiences — my debut mobile game Fracture Run proves I can ship complete projects with polish. </li>
+                        <li>Currently interning on mini-games in a stealth company , I'm excited to join a team where I can contribute code, debug creatively, and keep leveling up."</li></li>
+                        
+                    </ul>
+
+                    <div class="tab-titles">
+                        <video autoplay loop muted playsinline class="tab-video tab-video-left">
+                            <source src="Images/Character_Run_Left.webm" type="video/webm">
+                        </video>
+                        <p class="tab-links active-link" onclick="opentab('Skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('Experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('Education')">Education</p>
+                        <p class="tab-links" onclick="opentab('Projects')">Projects</p>
+                        <p class="tab-links" onclick="opentab('certifications')">Certifications</p>
+
+                        <video autoplay loop muted playsinline class="tab-video tab-video-right">
+                        <source src="Images/Character_Run_Right.webm" type="video/webm">
+                    </video>
+                    </div>
+
+                    <!-- Skills Tab -->
+                    <div class="tab-contents active-tab" id="Skills">
+                        <div class="carousel-wrapper">
+                            <button class="carousel-arrow left" onclick="scrollSkills('left')"><i class="fas fa-chevron-left"></i></button>
+                            <div class="horizontal-scroller" id="skills-scroller">
+                                <div class="scroll-container skills-grid">
+                                    <div class="skill-card">
+                                        <h3>Technical Skills</h3>
+                                         <ul><li>Unity (C#)</li></ul>
+                                        <ul><li>C# Scripting</li></ul>
+                                        <ul><li>Git</li></ul>
+                                        <ul><li>UI / Canvas</li></ul>
+                                        <ul><li>Unreal Engine</li></ul>
+                                        
+                                    </div>
+                                    <div class="skill-card">
+                                        <h3>Soft Skills</h3>
+                                        <ul><li>Debugging</li></ul>
+                                        <ul><li>Time Management</li></ul>
+                                        <ul><li>Team Collaboration</li></ul>
+                                        <ul><li>Fast Prototyping</li></ul>
+                                        <ul><li>Problem Solving</li></ul>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="skill-card coming-soon">
+                                        <div>More Skills<br><span>COMING SOON</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-arrow right" onclick="scrollSkills('right')"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Experience Tab -->
+                    <div class="tab-contents" id="Experience">
+                        <div class="carousel-wrapper">
+                            <button class="carousel-arrow left" onclick="scrollExperience('left')"><i class="fas fa-chevron-left"></i></button>
+                            <div class="horizontal-scroller" id="experience-scroller">
+                                <div class="scroll-container experience-grid">
+                                    <div class="experience-card">
+                                        <h3>Contract Unity Game Developer (Mini-Game Prototypes)</h3>
+                                        <p class="company">
+                                    
+                                            </a> • Private Project / Task-Based Contract -Present (3/5 months completed)
+                                                    
+                                        </p>
+                                        <ul>
+                                            <li>Built and iterated on mini-game prototypes in Unity, handling core mechanics, player controls, and rapid feature delivery.</li>
+                                            <li>Learned and applied Unity best practices on-the-job (C# scripting, coroutines, UI, physics tweaks).</li>
+                                            <li>Used Git for version control while completing assigned tasks independently.</li>
+                                            <li>Focused on mobile-friendly gameplay and quick problem-solving in a flexible contract setup.</li>
+                                        </ul>
+                                        </div>
+
+                                         <div class="experience-card">
+                                        <h3>Unreal Game Programmer Intern</h3>
+                                        <p class="company">
+                                            <a href="https://www.linkedin.com/posts/sairam-yedida-9b367a253_internship-gamedevelopment-unrealengine-activity-7361321720441417728-9cCL" target="_blank">
+                                                Arcanion (Indie Studio)
+                                            </a> • May 2024 – August 2024
+                                        </p>
+                                        <ul>
+                                            <li>Developed a mini-game with 3 playable levels using Unreal Engine.</li>
+                                            <li>Level 1: Obstacle-based gameplay with hidden collectibles.</li>
+                                            <li>Level 2: Fast-paced running collectibles mechanic.</li>
+                                            <li>Level 3: Enemy-based combat where players defeat enemies and collect drops.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="experience-card coming-soon">
+                                        <div>Next Role<br><span>COMING SOON</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-arrow right" onclick="scrollExperience('right')"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Education Tab -->
+                    
+                    <div class="tab-contents" id="Education">
+    <div class="carousel-wrapper">
+        <button class="carousel-arrow left" onclick="scrollEducation('left')"><i class="fas fa-chevron-left"></i></button>
+        <div class="horizontal-scroller" id="education-scroller">
+            <div class="scroll-container education-grid">
+
+                <div class="skill-card">
+                    <h3>B.Tech in CSE (AI & ML)</h3>
+                    <p><strong>Ideal Institute of Technology</strong></p>
+                    <p><em>2022 — 2025 | Kakinada</em></p>
+                    <ul>
+                        <li>Current CGPA: 7.12</li>
+                        <li>Specialization in Artificial Intelligence</li>
+                        <li>Logic-based Programming & Algorithms</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Diploma in Mechanical Engg.</h3>
+                    <p><strong>Polytechnic Education</strong></p>
+                    <p><em>2018 — 2021</em></p>
+                    <ul>
+                        <li>Foundational Engineering Principles</li>
+                        <li>Technical Problem Solving</li>
+                        <li>Transitioned to Software Development</li>
+                    </ul>
+                </div>
+                <div class="skill-card coming-soon">
+                    <div>Specializations<br><span>IN PROGRESS</span></div>
+                </div>
+
+            </div>
+        </div>
+        <button class="carousel-arrow right" onclick="scrollEducation('right')"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</div>
+                                       >
+
+                    <!-- Certifications Tab -->
+                    <div class="tab-contents" id="certifications">
+                        <div class="carousel-wrapper">
+                            <button class="carousel-arrow left" onclick="scrollCertifications('left')"><i class="fas fa-chevron-left"></i></button>
+                            <div class="horizontal-scroller" id="certifications-scroller">
+                                <div class="scroll-container certifications-grid">
+                                    <div class="certification-card">
+                                        <h3>Git & Version Control</h3>
+                                        <p class="issuer">Udemy Certificate</p>
+                                        <ul></ul>
+                                    </div>
+                                    <div class="certification-card coming-soon">
+                                        <div>More Certifications<br><span>COMING SOON</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-arrow right" onclick="scrollCertifications('right')"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Projects Tab -->
+                    <div class="tab-contents" id="Projects">
+                        <div class="carousel-wrapper">
+                            <button class="carousel-arrow left" onclick="scrollProjects('left')"><i class="fas fa-chevron-left"></i></button>
+                            <div class="horizontal-scroller" id="projects-scroller">
+                                <div class="scroll-container projects-grid">
+                                    <div class="project-card">
+                                        <h3>Fracture Run</h3>
+                                        <a href="https://github.com/sairamyedida06/Fracture-Run" target="_blank" class="git-icon-link">
+                                            <i class="fa-brands fa-github"></i>
+                                        </a>
+                                        <p class="tech"> Unity Engine,   C#</p>
+                                        <ul>
+                                            <li>Fracture Run is a thrilling endless runner mobile game built in Unity, where you control a speedy red car leaping across procedurally generated black platforms in a vibrant, ever-changing skybox world.</li>
+                                            <li>Tap to switch directions (left/right), collect glowing green gems for bonus points (+5 score & VFX), and survive speed ramps every 50 points while platforms crumble behind you.</li>
+                                            <li>Dynamic features like falling physics, smooth camera follow, high-score saving, and optimized mobile controls make it addictive—launching on Amazon App Store, Google Play soon!</li>
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="project-card">
+                                        <h3>Virus-Escape</h3>
+                                        <a href="https://github.com/sairamyedida06/Virus-Escape" target="_blank" class="git-icon-link">
+                                            <i class="fa-brands fa-github"></i>
+                                        </a>
+                                        <p class="tech"> Unity Engine,   C#  - Prototype </p>
+                                        <ul>
+                                            <li>A tense 3D top-down sci-fi survival game where you dodge non-attacking zombie hordes and deadly traps while hunting glowing keys to unlock doors to the next level.
+                                                Navigate neon-lit cyber labs with smooth top-down controls, escalating enemy density, and procedural trap placement for replayable challenge.
+                                                Built in Unity for mobile – alpha prototype complete, full launch soon on Amazon Appstore & Play Store!</li>
+
+                                            <li>Tech: Unity C#, Top-Down Controller (WASD/Touch), Key Collection System, Level Doors & Progression
+                                                 Status: Prototype – Launching Q1 2026</li>
+                                                
+                                            
+                                        </ul>
+                                    </div>
+
+                                    <div class="project-card">
+                                        <h3>Upcoming Projects</h3>           
+                                        </a>
+                                        <p class="tech"> Unity Engine,   C# - </p>
+                                        <ul>
+                                            <h2>Pixel Spike Dash :</h2>
+                                           <li>A tight 2D platformer with precise jumping, dashing, and enemy avoidance mechanics. Planning short, challenging levels with one-hit-death tension and star collection. Early concept stage — prototyping controls and enemy AI next.</li>
+
+
+                                            <h2>Trigger Coin Rush :</h2>
+                                            <li>Fast-paced auto-shooter inspired by Johnny Trigger: walk, trigger bullets to clear paths, collect coins, and upgrade guns in an in-game shop. Addictive loop with power-ups and leaderboards. Pure planning phase — focusing on core shooting + shop system when I start.
+                                            </li>
+                                            
+                                            </li>
+                                                
+                                            
+                                        </ul>
+                                    </div>
+                                 
+                                    
+                                         <!-- Add more projects as needed -->
+                                    <div class="project-card coming-soon">
+                                        <div>Next Project<br><span>COMING SOON</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-arrow right" onclick="scrollProjects('right')"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Games Section -->
+    <div id="games" class="games-section">
+        <div class="container">
+            <h1 class="subtitle">My Games</h1>
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow left" onclick="scrollGames('left')"><i class="fas fa-chevron-left"></i></button>
+                <div class="horizontal-scroller" id="games-scroller">
+                    <div class="scroll-container">
+                        <div class="game-card">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <h2> Fracture Run</h2>
+                            <p>Test your Reflexes with a simple Endless Runner.  </p>
+                            <a href="https://sairamyedida.itch.io/drone-rampage" target="_blank" class="btn neon-btn">Play Now</a>    
+                            <div class="video-wrapper">
+                               <iframe width="560" height="315" src="https://www.youtube.com/embed/T6XYx4Uh-t8?si=W2SmFWNwenxXJZjL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card coming-soon">
+                            <div>virus<br><span>COMING SOON</span></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow right" onclick="scrollGames('right')"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div id="portfolio" class="portfolio-section">
+        <div class="container">
+            <h1 class="subtitle">In Game Pictures</h1>
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow left" onclick="scrollPortfolio('left')"><i class="fas fa-chevron-left"></i></button>
+                <div class="horizontal-scroller" id="portfolio-scroller">
+                    <div class="scroll-container">
+                        <div class="portfolio-card">
+                            <h3>Fracture Run</h3>
+                            <div class="screenshot-grid">
+                                <img src="Images/0.png" alt="Drone Rampage screenshot 1" class="screenshot-img">
+                                <img src="Images/1.png" alt="Drone Rampage screenshot 2" class="screenshot-img">
+                                <img src="Images/2.png" alt="Drone Rampage screenshot 3" class="screenshot-img">
+                                <img src="Images/3.png" alt="Drone Rampage screenshot 4" class="screenshot-img">
+                                <img src="Images/4.png" alt="Drone Rampage screenshot 5" class="screenshot-img">
+                            </div>
+                        </div>
+                        
+                        <div class="portfolio-card coming-soon">
+                            <div>Virus Escape<br><span>SCREENSHOTS<br>COMING SOON</span></div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <button class="carousel-arrow right" onclick="scrollPortfolio('right')"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://sairamyedida.itch.io/" target="_blank" class="btn neon-btn large">More Games →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="subtitle">Get In Touch</h1>
+                    <p><i class="fa-solid fa-envelope"></i> sairamyedidaoffl@gmail.com</p>
+                    <p><i class="fa-solid fa-phone-volume"></i> +91 6309641235</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/sairam-yedida-9b367a253/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/sairamyedida06/" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.instagram.com/sairam_yedida/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <a href="Images/Yedida Sai Ram.pdf" download class="btn neon-btn">Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="tel" name="number" placeholder="Your Number">
+                        <textarea name="message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn neon-btn">Send Message</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+
+        const roleText = document.querySelector(".role");
+const text = "UNITY GAME DEVELOPER";
+let i = 0;
+
+roleText.innerHTML = ""; // Clear existing text
+
+function typeWriter() {
+    if (i < text.length) {
+        roleText.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100); // Adjust speed here
+    }
+}
+
+// Start typing when page loads
+window.addEventListener('load', typeWriter);
+        // --- TAB LOGIC ---
+function opentab(tabname) {
+    const tablinks = document.getElementsByClassName("tab-links");
+    const tabcontents = document.getElementsByClassName("tab-contents");
+
+    for (let link of tablinks) link.classList.remove("active-link");
+    for (let content of tabcontents) content.classList.remove("active-tab");
+
+    event.currentTarget.classList.add("active-link");
+    document.getElementById(tabname).classList.add("active-tab");
+}
+
+// --- CAROUSEL SCROLL LOGIC ---
+// This handles Skills, Experience, Certifications, Projects, and Games
+function scrollSkills(direction) {
+    const scroller = document.getElementById('skills-scroller');
+    const amount = 100;
+    scroller.scrollBy({ left: direction === 'left' ? -amount : amount, behavior: 'smooth' });
+}
+
+
+function scrollExperience(direction) {
+    const scroller = document.getElementById('experience-scroller');
+    scroller.scrollBy({ left: direction === 'left' ? -700 : 700, behavior: 'smooth' });
+}
+
+function scrollEducation(direction) {
+    const scroller = document.getElementById('education-scroller');
+    scroller.scrollBy({ left: direction === 'left' ? -500 : 500, behavior: 'smooth' });
+}
+function scrollGames(direction) {
+    const scroller = document.getElementById('games-scroller');
+    scroller.scrollBy({ left: direction === 'left' ? -400 : 400, behavior: 'smooth' });
+}
+
+function scrollCertifications(direction) {
+    const scroller = document.getElementById('certifications-scroller');
+    scroller.scrollBy({ left: direction === 'left' ? -300 : 300, behavior: 'smooth' });
+}
+
+function scrollProjects(direction) {
+    const scroller = document.getElementById('projects-scroller');
+    scroller.scrollBy({ left: direction === 'left' ? -700 : 700, behavior: 'smooth' });
+}
+
+function scrollPortfolio(direction) {
+    const scroller = document.getElementById('portfolio-scroller');
+    scroller.scrollBy({ left: direction === 'left' ? -400 : 400, behavior: 'smooth' });
+}
+
+// --- MOBILE MENU LOGIC ---
+const sidemenu = document.getElementById("sidemenu");
+function openmenu() { sidemenu.style.right = "0"; }
+function closemenu() { sidemenu.style.right = "-300px"; }
+        const canvas = document.getElementById("scroll-animation");
+const context = canvas.getContext("2d");
+const html = document.documentElement;
+
+// --- CONFIG ---
+const frameCount = 250;
+const getFolder = () => window.innerWidth < 768 ? 'Sequence_Mobile' : 'Sequence';
+let currentFolder = getFolder();
+const images = [];
+const airbnb = { frame: 0 }; 
+
+// --- DYNAMIC PATH ---
+const currentFrame = (index, folder) => (
+  `Images/${folder}/frame_${index.toString().padStart(4, '0')}.jpg`
+);
+
+// --- PRELOADER ---
+function preloadImages(folder) {
+    images.length = 0; 
+    for (let i = 1; i <= frameCount; i++) {
+        const img = new Image();
+        img.src = currentFrame(i, folder);
+        images.push(img);
+    }
+}
+
+preloadImages(currentFolder);
+
+// --- CANVAS RESIZE & MOBILE SWAP ---
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    render();
+}
+
+window.addEventListener('resize', () => {
+    resizeCanvas();
+    const newFolder = getFolder();
+    if (newFolder !== currentFolder) {
+        currentFolder = newFolder;
+        preloadImages(currentFolder);
+    }
+});
+
+// --- THE SMOOTH SCROLL (GSAP LERP) ---
+window.addEventListener("scroll", () => {
+    const scrollTop = html.scrollTop;
+    const maxScrollTop = html.scrollHeight - window.innerHeight;
+    const scrollFraction = scrollTop / maxScrollTop;
+    const targetFrame = Math.min(frameCount - 1, Math.floor(scrollFraction * frameCount));
+    
+    gsap.to(airbnb, {
+        frame: targetFrame,
+        snap: "frame",
+        ease: "none",
+        duration: 0.5, 
+        onUpdate: render
+    });
+});
+
+// --- RENDER ENGINE ---
+function render() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    const img = images[airbnb.frame];
+    if (img && img.complete) {
+        const imgRatio = img.width / img.height;
+        const canvasRatio = canvas.width / canvas.height;
+        let dWidth, dHeight, dx, dy;
+
+        if (canvasRatio > imgRatio) {
+            dWidth = canvas.width;
+            dHeight = canvas.width / imgRatio;
+            dx = 0;
+            dy = (canvas.height - dHeight) / 2;
+        } else {
+            dWidth = canvas.height * imgRatio;
+            dHeight = canvas.height;
+            dx = (canvas.width - dWidth) / 2;
+            dy = 0;
+        }
+        context.drawImage(img, dx, dy, dWidth, dHeight);
+    }
+}
+
+resizeCanvas();
+images[0].onload = render;
+    </script>
+</body>
+</html>
