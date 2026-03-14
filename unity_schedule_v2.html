@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unity Dev Schedule</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #09090e;
+    --card:    #111119;
+    --cardh:   #17171f;
+    --border:  rgba(255,255,255,0.055);
+    --red:     #ff4500;
+    --orange:  #ff8c00;
+    --cyan:    #00e5ff;
+    --green:   #39ff14;
+    --purple:  #c44dff;
+    --text:    #eaeaf2;
+    --muted:   #5a5a72;
+    --faint:   rgba(255,69,0,0.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'DM Mono',monospace;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  /* grid bg */
+  body::before{
+    content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(rgba(255,69,0,0.025) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,69,0,0.025) 1px,transparent 1px);
+    background-size:38px 38px;
+  }
+  /* glow */
+  body::after{
+    content:'';position:fixed;top:-180px;right:-180px;
+    width:560px;height:560px;pointer-events:none;z-index:0;
+    background:radial-gradient(circle,rgba(255,69,0,0.11) 0%,transparent 70%);
+  }
+  .page{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:44px 24px 72px;}
+
+  /* ── HEADER ── */
+  .tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--red);border:1px solid rgba(255,69,0,.35);
+    padding:4px 12px;margin-bottom:18px;
+  }
+  .tag span{width:5px;height:5px;border-radius:50%;background:var(--red);animation:blink 1.4s infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+  h1{
+    font-family:'Syne',sans-serif;font-size:clamp(34px,6vw,64px);
+    font-weight:800;line-height:1.04;letter-spacing:-.02em;margin-bottom:10px;
+  }
+  h1 em{color:var(--red);font-style:normal;}
+  .sub{font-size:10px;color:var(--muted);letter-spacing:.06em;margin-bottom:40px;}
+
+  /* ── SECTION LABEL ── */
+  .sec{
+    display:flex;align-items:center;gap:10px;
+    font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--muted);margin:28px 0 12px;
+  }
+  .sec::after{content:'';flex:1;height:1px;background:var(--border);}
+  .sec-dot{width:4px;height:4px;border-radius:50%;}
+
+  /* ── GRID ── */
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px;}
+  .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:8px;}
+  .g1{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:8px;}
+
+  /* ── CARD ── */
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:3px;
+    padding:15px 16px 13px;position:relative;overflow:hidden;
+    transition:transform .18s ease,background .18s ease,border-color .18s ease;
+    animation:fadeUp .45s ease both;
+  }
+  .card:hover{transform:translateY(-2px);background:var(--cardh);}
+  /* accent bar */
+  .card::before{
+    content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:var(--bar,var(--red));
+  }
+  /* top row */
+  .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px;}
+  .time{font-size:9px;color:var(--bar,var(--red));letter-spacing:.1em;}
+  .icon{font-size:15px;opacity:.75;}
+  .title{font-family:'Syne',sans-serif;font-size:13.5px;font-weight:700;
+    letter-spacing:-.01em;margin-bottom:5px;color:var(--text);}
+  .desc{font-size:9.5px;color:var(--muted);line-height:1.65;letter-spacing:.02em;}
+  .pill{
+    display:inline-block;font-size:8px;letter-spacing:.1em;
+    padding:2px 9px;border-radius:2px;margin-top:9px;
+    background:var(--pill-bg,rgba(255,69,0,.1));
+    color:var(--bar,var(--red));
+  }
+
+  /* colour themes */
+  .c-red  {--bar:var(--red);  --pill-bg:rgba(255,69,0,.1);}
+  .c-cyan {--bar:var(--cyan); --pill-bg:rgba(0,229,255,.08); border-color:rgba(0,229,255,.1);}
+  .c-green{--bar:var(--green);--pill-bg:rgba(57,255,20,.07); border-color:rgba(57,255,20,.1);}
+  .c-oran {--bar:var(--orange);--pill-bg:rgba(255,140,0,.1); border-color:rgba(255,140,0,.1);}
+  .c-purp {--bar:var(--purple);--pill-bg:rgba(196,77,255,.1);border-color:rgba(196,77,255,.1);}
+  .c-mute {--bar:#444458;--pill-bg:rgba(255,255,255,.05); border-color:rgba(255,255,255,.04);}
+
+  /* ── BANNER ── */
+  .banner{
+    border-radius:3px;padding:14px 20px;
+    display:flex;align-items:center;gap:16px;margin-bottom:8px;
+    border:1px solid;animation:fadeUp .45s ease both;
+  }
+  .banner-body{flex:1;}
+  .banner-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;margin-bottom:4px;}
+  .banner-desc{font-size:9px;line-height:1.7;letter-spacing:.02em;}
+  .banner-ico{font-size:26px;opacity:.8;flex-shrink:0;}
+  .b-purp{background:#130b1a;border-color:rgba(196,77,255,.25);}
+  .b-purp .banner-title{color:var(--purple);}
+  .b-purp .banner-desc{color:rgba(196,77,255,.7);}
+  .b-oran{background:#160c04;border-color:rgba(255,140,0,.22);}
+  .b-oran .banner-title{color:var(--orange);}
+  .b-oran .banner-desc{color:rgba(255,140,0,.7);}
+
+  /* ── STATS ── */
+  .stats{
+    margin-top:40px;padding-top:24px;border-top:1px solid var(--border);
+    display:flex;flex-wrap:wrap;gap:32px;align-items:center;
+  }
+  .stat-val{
+    font-family:'Bebas Neue',sans-serif;font-size:38px;line-height:1;
+    letter-spacing:.04em;
+  }
+  .stat-lbl{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+  .divider{width:1px;height:44px;background:var(--border);}
+  .motto{margin-left:auto;text-align:right;}
+  .motto-main{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;color:var(--red);}
+  .motto-sub{font-size:9px;color:var(--muted);margin-top:5px;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  .g3 .card:nth-child(1){animation-delay:.04s;}
+  .g3 .card:nth-child(2){animation-delay:.09s;}
+  .g3 .card:nth-child(3){animation-delay:.14s;}
+  .g2 .card:nth-child(1){animation-delay:.04s;}
+  .g2 .card:nth-child(2){animation-delay:.09s;}
+
+  @media(max-width:700px){.g3,.g2{grid-template-columns:1fr 1fr;}.stats{gap:16px;}.motto{margin-left:0;text-align:left;}}
+  @media(max-width:440px){.g3,.g2{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="tag"><span></span>Daily OS · Unity Game Dev</div>
+  <h1>My Daily Schedule<br>as a <em>Game Developer</em></h1>
+  <p class="sub">10:00 AM → 10:00 PM &nbsp;·&nbsp; Zero idle time &nbsp;·&nbsp; Every day, no excuses.</p>
+
+  <!-- ── MORNING ── -->
+  <div class="sec"><div class="sec-dot" style="background:var(--red)"></div>Morning — Prime time</div>
+  <div class="g3">
+    <div class="card c-red">
+      <div class="top"><div class="time">10:00 – 10:20</div><div class="icon">📋</div></div>
+      <div class="title">Plan the Day</div>
+      <div class="desc">Brain dump. Write 3 non-negotiable tasks. Code goals only — no vague plans.</div>
+      <div class="pill">20 MIN</div>
+    </div>
+    <div class="card c-red">
+      <div class="top"><div class="time">10:20 – 11:15</div><div class="icon">💻</div></div>
+      <div class="title">C# Masterclass</div>
+      <div class="desc">Udemy — Elegant Code. OOP, delegates, events, LINQ, generics. Take notes in actual code.</div>
+      <div class="pill">55 MIN</div>
+    </div>
+    <div class="card c-cyan">
+      <div class="top"><div class="time">11:15 – 11:30</div><div class="icon">🫖</div></div>
+      <div class="title">Break</div>
+      <div class="desc">Stand up. Stretch. Walk a bit. No phone, no reels. Let the morning code settle in your head.</div>
+      <div class="pill">15 MIN</div>
+    </div>
+  </div>
+
+  <div class="g1">
+    <div class="card c-red">
+      <div class="top"><div class="time">11:30 – 13:00</div><div class="icon">🎮</div></div>
+      <div class="title">Unity Systems + Course</div>
+      <div class="desc">Deep work block. Build real Unity systems — Object Pooling, State Machines, AI. Follow Udemy course + immediately apply it in your own test scene. No passive watching.</div>
+      <div class="pill">90 MIN</div>
+    </div>
+  </div>
+
+  <!-- ── MIDDAY ── -->
+  <div class="sec"><div class="sec-dot" style="background:var(--cyan)"></div>Midday — Refuel</div>
+  <div class="g2">
+    <div class="card c-cyan">
+      <div class="top"><div class="time">13:00 – 13:45</div><div class="icon">🍽️</div></div>
+      <div class="title">Lunch</div>
+      <div class="desc">Eat properly. No screen. Lie down if needed. Your brain consolidates memory during rest — this is not wasted time.</div>
+      <div class="pill">45 MIN</div>
+    </div>
+    <div class="card c-red">
+      <div class="top"><div class="time">13:45 – 15:00</div><div class="icon">🏗️</div></div>
+      <div class="title">Game Dev Portfolio</div>
+      <div class="desc">Your actual game. Apply every system from the morning. Ship one feature per session. Not experiments — real shippable pieces.</div>
+      <div class="pill">75 MIN</div>
+    </div>
+  </div>
+
+  <!-- ── AFTERNOON ── -->
+  <div class="sec"><div class="sec-dot" style="background:var(--red)"></div>Afternoon — Go deeper</div>
+  <div class="g3">
+    <div class="card c-cyan">
+      <div class="top"><div class="time">15:00 – 15:15</div><div class="icon">🌬️</div></div>
+      <div class="title">Break</div>
+      <div class="desc">Short reset. Water. Eyes off screen. Breathe. You have a big block ahead.</div>
+      <div class="pill">15 MIN</div>
+    </div>
+    <div class="card c-red">
+      <div class="top"><div class="time">15:15 – 16:15</div><div class="icon">📐</div></div>
+      <div class="title">Game Math</div>
+      <div class="desc">Udemy — Math for Video Games. Vectors, dot/cross product, matrices, trig. Implement every concept directly in Unity.</div>
+      <div class="pill">60 MIN</div>
+    </div>
+    <div class="card c-green">
+      <div class="top"><div class="time">16:15 – 17:30</div><div class="icon">💪</div></div>
+      <div class="title">Gym / Exercise</div>
+      <div class="desc">Non-negotiable. This is where tension dissolves and intrusive thoughts lose. Train hard — your body fights what your mind can't.</div>
+      <div class="pill">75 MIN</div>
+    </div>
+  </div>
+
+  <!-- Journal reset banner -->
+  <div class="banner b-purp">
+    <div class="banner-body">
+      <div class="banner-title">🧠 Reset Protocol — 17:30</div>
+      <div class="banner-desc">Shower + 5-min journal. Write what you built today. Write the intrusive thought — label it "just a thought" — close the notebook. You walk into the evening as a different person.</div>
+    </div>
+    <div class="banner-ico">🔄</div>
+  </div>
+
+  <!-- ── EVENING ── -->
+  <div class="sec"><div class="sec-dot" style="background:var(--orange)"></div>Evening — Build the career</div>
+  <div class="g3">
+    <div class="card c-cyan">
+      <div class="top"><div class="time">17:30 – 18:00</div><div class="icon">🍲</div></div>
+      <div class="title">Fresh Up + Dinner</div>
+      <div class="desc">Eat well. No screen. Calm music if needed. This is the fuel for a 4-hour evening grind.</div>
+      <div class="pill">30 MIN</div>
+    </div>
+    <div class="card c-red">
+      <div class="top"><div class="time">18:00 – 19:10</div><div class="icon">🧩</div></div>
+      <div class="title">More Game Prog + Course</div>
+      <div class="desc">Design patterns for games — Command, Observer, Service Locator, ECS basics. Code a mini-demo of each. No passive watching.</div>
+      <div class="pill">70 MIN</div>
+    </div>
+    <div class="card c-oran">
+      <div class="top"><div class="time">19:10 – 20:00</div><div class="icon">📄</div></div>
+      <div class="title">Interview + Resume Prep</div>
+      <div class="desc">LeetCode (easy→medium), Unity interview Qs, C# tricky concepts. Polish resume bullet by bullet. Future you will thank you.</div>
+      <div class="pill">50 MIN</div>
+    </div>
+  </div>
+
+  <!-- ── WIND DOWN ── -->
+  <div class="sec"><div class="sec-dot" style="background:var(--purple)"></div>Wind Down — Ship + Close</div>
+  <div class="g3">
+    <div class="card c-oran">
+      <div class="top"><div class="time">20:00 – 21:00</div><div class="icon">🔗</div></div>
+      <div class="title">LinkedIn / Devlog / Posts</div>
+      <div class="desc">Document one thing you built today. Screenshot, clip, or written devlog. Build your audience while building your game — compounding returns.</div>
+      <div class="pill">60 MIN</div>
+    </div>
+    <div class="card c-red">
+      <div class="top"><div class="time">21:00 – 22:00</div><div class="icon">🎯</div></div>
+      <div class="title">Portfolio Game — Extra Time</div>
+      <div class="desc">Polish, refactor, or add the feature you couldn't finish earlier. This hour separates good devs from great ones. Push one commit before sleep.</div>
+      <div class="pill">60 MIN</div>
+    </div>
+    <div class="card c-mute">
+      <div class="top"><div class="time">22:00 – 22:10</div><div class="icon">🌙</div></div>
+      <div class="title">Daily Review + Close</div>
+      <div class="desc">5 bullets: what you shipped, what broke, what tomorrow must destroy. Close laptop. You're done. No one who does this stays average.</div>
+      <div class="pill">SHUTDOWN</div>
+    </div>
+  </div>
+
+  <!-- ── STATS ── -->
+  <div class="stats">
+    <div>
+      <div class="stat-val" style="color:var(--red)">6h</div>
+      <div class="stat-lbl">Unity / Code</div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="stat-val" style="color:var(--cyan)">12h</div>
+      <div class="stat-lbl">Structured Day</div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="stat-val" style="color:var(--green)">1×</div>
+      <div class="stat-lbl">Gym Daily</div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="stat-val" style="color:var(--purple)">1×</div>
+      <div class="stat-lbl">Mental Reset</div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="stat-val" style="color:var(--orange)">7×</div>
+      <div class="stat-lbl">Days / Week</div>
+    </div>
+    <div class="motto">
+      <div class="motto-main">When thoughts come — open Unity.</div>
+      <div class="motto-sub">Code is the only noise that matters. Every single day.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
