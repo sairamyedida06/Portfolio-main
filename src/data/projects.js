@@ -103,7 +103,7 @@ export const projects = [
       { label: "Water Car Simulator — screenshot 3", ratio: "16/9" },
       { label: "Water Car Simulator — screenshot 4", ratio: "16/9" },
     ],
-    links: { play: "[insert platform link]", source: "", devlog: "" },
+    links: { play: "https://www.onlinerealgames.com/game/water-car-stimulator", source: "", devlog: "" },
   },
 
   {
@@ -141,7 +141,7 @@ export const projects = [
       { label: "Tower War Defense — screenshot 2", ratio: "16/9" },
       { label: "Tower War Defense — screenshot 3", ratio: "16/9" },
     ],
-    links: { play: "[insert platform link]", source: "", devlog: "" },
+    links: { play: "https://www.onlinerealgames.com/game/tower-defence", source: "", devlog: "" },
   },
 
   {
@@ -180,7 +180,7 @@ export const projects = [
       { label: "Operation Secure — screenshot 2", ratio: "16/9" },
       { label: "Operation Secure — screenshot 3", ratio: "16/9" },
     ],
-    links: { play: "[insert platform link]", source: "", devlog: "" },
+    links: { play: "https://www.onlinerealgames.com/game/operation-secure", source: "", devlog: "" },
   },
 
   {
