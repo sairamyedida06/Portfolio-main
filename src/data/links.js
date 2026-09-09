@@ -12,7 +12,7 @@ export const profile = {
   phone: "+91 6309641235",
   // Works today with the .docx you sent. Export a PDF into /public and switch
   // this to the .pdf path before you start applying — recruiters prefer PDF.
-  cv: asset("SaiRam_Yedida_Unity_Developer_Resume.docx"),
+  cv: asset("SaiRam_Yedida_Unity_Developer_Resume.pdf"),
   availability: "Open to Unity developer roles — full-time or contract.",
 };
 

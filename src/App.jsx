@@ -89,7 +89,7 @@ function Header() {
             className="inline-flex items-center gap-2 bg-accent-bright px-5 py-2.5 text-[15px] font-semibold text-on-accent shadow-[var(--shadow-card)] transition-all hover:brightness-110"
             style={{ borderRadius: "var(--radius-btn)" }}
           >
-            Résumé
+            Resume
             <Icon name="arrowUpRight" className="h-4 w-4" />
           </a>
         </nav>
@@ -126,7 +126,7 @@ function Header() {
             className="mt-5 inline-flex items-center gap-2 bg-accent-bright px-5 py-3 text-[15px] font-semibold text-on-accent"
             style={{ borderRadius: "var(--radius-btn)" }}
           >
-            Download résumé
+            Download resume
             <Icon name="arrowUpRight" className="h-4 w-4" />
           </a>
         </nav>

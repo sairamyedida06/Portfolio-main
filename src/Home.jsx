@@ -76,7 +76,7 @@ function Hero() {
                 See my work
               </Button>
               <Button href={profile.cv} variant="ghost" icon="download">
-                Download résumé
+                Download resume
               </Button>
               <Button href={`mailto:${profile.email}`} variant="ghost" icon="mail">
                 Email me
@@ -631,7 +631,7 @@ function Contact() {
             {profile.phone}
           </Button>
           <Button href={profile.cv} variant="ghost" icon="download">
-            Résumé
+            Resume
           </Button>
         </Reveal>
 
