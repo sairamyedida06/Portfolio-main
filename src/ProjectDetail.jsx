@@ -75,12 +75,24 @@ export default function ProjectDetail() {
               {(project.links?.play || project.links?.source) && (
                 <div className="rise mt-7 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
                   {project.links.play && (
-                    <Button href={project.links.play} icon="gamepad" trailing="arrowUpRight">
+                    <Button
+                      href={project.links.play}
+                      icon="gamepad"
+                      trailing="arrowUpRight"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Play {project.title}
                     </Button>
                   )}
                   {project.links.source && (
-                    <Button href={project.links.source} variant="ghost" icon="github">
+                    <Button
+                      href={project.links.source}
+                      variant="ghost"
+                      icon="github"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       View source
                     </Button>
                   )}
