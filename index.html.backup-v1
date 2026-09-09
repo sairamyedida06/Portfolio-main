@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sai Ram — game developer from India. Six mobile games shipped in a year, now building 8-player multiplayer on Photon Fusion 2."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Sai Ram — Game Developer</title>
+    <script>
+      // Set theme before first paint so there's no flash. Saved choice wins, then OS preference.
+      // Shares the "rash-theme" key with the studio site and the arcade.
+      ;(function () {
+        try {
+          var t = localStorage.getItem('rash-theme')
+          if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          document.documentElement.dataset.theme = t
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

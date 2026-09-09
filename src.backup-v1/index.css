@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+@import "tailwindcss";
+
+/*
+  Design system inherited verbatim from rashgamestudios.com — same palette,
+  same three typefaces, same component DNA. The two sites are siblings.
+  Palette origin: the Rash logo's deep navy R and its electric blue slash.
+*/
+@theme {
+  --color-base: #f7f8fa;
+  --color-ink: #101828;
+  --color-ink-soft: #4a5468;
+  --color-blue: #1290f0;
+  --color-coral: #ff5c47;
+  --color-sun: #ffb534;
+  --color-mint: #17c393;
+  --color-grape: #8b5cf6;
+  --color-punch: #ff5c7a;
+  --color-surface: #ffffff;
+  --color-deep: #101828;
+  --color-on-ink: #ffffff;
+  --color-on-accent: #ffffff;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+}
+
+/* ---- Dark mode: designed, not inverted. Lifted near-black base; accents
+   desaturated and slightly brightened so they sit calmly. Hue relationships
+   preserved, so per-project color-coding still reads the same. ---- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-base: #14141a;
+  --color-ink: #e9ebf2;
+  --color-ink-soft: #9aa3b8;
+  --color-blue: #5fa8e6;
+  --color-coral: #e0796a;
+  --color-sun: #d9ab5e;
+  --color-mint: #46bfa0;
+  --color-grape: #a08ce0;
+  --color-punch: #db7f95;
+  --color-surface: #1d1e26;
+  --color-deep: #0e1016;
+  --color-on-ink: #14141a;
+  --color-on-accent: #14141a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-blue);
+  color: var(--color-on-accent);
+}
+
+/* ---- Page-load reveal ---- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.85s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+
+/* ---- Scroll-triggered reveals ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 0.9, 0.3, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Living cards. `.car-bump` is the class the toy car applies as it
+   drives over a card — identical to hover, so a bump reads as a hover. ---- */
+.game-card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 0.9, 0.3, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+.game-card:hover,
+.game-card:focus-within,
+.game-card.car-bump {
+  transform: translateY(-8px) rotate(-1.4deg);
+  box-shadow: 0 30px 60px -26px var(--game);
+  border-color: var(--game);
+}
+.game-card:nth-child(even):hover,
+.game-card:nth-child(even):focus-within,
+.game-card:nth-child(even).car-bump {
+  transform: translateY(-8px) rotate(1.4deg);
+}
+
+/* Slash shine — echo of the logo mark, sweeping across card art on hover. */
+.slash-shine {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.slash-shine::after {
+  content: "";
+  position: absolute;
+  top: -30%;
+  bottom: -30%;
+  left: -35%;
+  width: 26%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-24deg);
+  transition: left 0.55s cubic-bezier(0.22, 0.9, 0.3, 1);
+}
+.game-card:hover .slash-shine::after,
+.game-card:focus-within .slash-shine::after,
+.game-card.car-bump .slash-shine::after {
+  left: 115%;
+}
+
+/* ---- Timeline "up next" pulse ---- */
+@keyframes pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--game) 50%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2.2s ease-out infinite;
+}
+
+/* ---- Reduced motion: everything settles, nothing moves ---- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .pulse-dot {
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .game-card,
+  .game-card:hover,
+  .game-card:focus-within,
+  .game-card.car-bump {
+    transition: none;
+    transform: none;
+  }
+  .slash-shine::after {
+    display: none;
+  }
+}
